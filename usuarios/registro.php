@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query = "INSERT INTO usuarios (nombre, apellido, email, contrasena) VALUES ('$nombre','$apellido','$email','$hashed_contrasena')";
 
     if (mysqli_query($conexion, $query)) {
-        header('location: formulario_login.php');
+        echo "<script>alert('Usuario creado con éxito');</script>";
+        echo "<script>window.location.href='../login.php';</script>";
         exit();
     } else {
         echo "Error: no conectó " . $query . "<br>" . mysqli_error($conexion);

@@ -1,9 +1,5 @@
 <?php
 session_start();
-if($_SESSION['accedio']!=true){
-  echo "<script>alert('Debe iniciar sesion primero');</script>";
-  echo "<script>window.location.href='login.php';</script>";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

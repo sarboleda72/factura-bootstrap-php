@@ -1,6 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 require '../bd/conexion.php';
 session_start();
 
@@ -18,7 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $row = $result->fetch_assoc();
 
         if (password_verify($contrasena, $row['contrasena'])) {
+            $_SESSION['nombre']="".$row['nombre']." ".$row['apellido'];
             $_SESSION['usuario'] = $email;
+            $_SESSION['accedio']=true;
             header('location: ../index.php');
             exit();
         } else {
@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
 }
-
 $conexion->close();
 header('location: ../usuarios/formulario_login.php');
 exit();

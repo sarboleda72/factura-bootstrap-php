@@ -1,3 +1,7 @@
+<?php
+session_start();
+session_destroy();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>RuangAdmin - Login</title>
+  <title>Inicio de sesión</title>
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/ruang-admin.min.css" rel="stylesheet">
@@ -27,32 +31,32 @@
               <div class="col-lg-12">
                 <div class="login-form">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Ingreso Usuarios registrados</h1>
-                    <h2 class="h4 text-gray-900 mb-4">Almacen CPIC</h2>
+                    <h1 class="h4 text-gray-900 mb-4">Inicio de sesión</h1>
                   </div>
-                  <form class="user">
-                    <div class="form-group">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Tipo de documento de identidad
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" href="#">Cédula de ciudadanía</a>
-                          <a class="dropdown-item" href="#">Tarjeta de indentidad</a>
-                          <a class="dropdown-item" href="#">Cédula de extranjería</a>
-                        </div>
+                  <form name="login" action="usuarios/login.php" method="POST">
+                    <div class="input-group form-group mt-3">
+                      <div class="bg-secondary rounded-start">
+                        <span class="m-3"><i class="fas fa-user mt-2"></i></span>
                       </div>
+                      <input type="email" class="form-control" placeholder="Correo Electrónico" name="email">
                     </div>
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Número de documento">
+                    <div class="input-group form-group mt-3">
+                      <div class="bg-secondary rounded-start">
+                        <span class="m-3"><i class="fas fa-key mt-2"></i></span>
+                      </div>
+                      <input type="password" class="form-control" placeholder="Contraseña" name="contrasena">
                     </div>
-                    <div class="form-group">
-                      <input type="password" class="form-control" id="exampleInputPassword" placeholder="Contraseña">
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-primary bg-success btn-block" value="Acceder">
+
+                    <div class="form-group mt-3">
+                      <button type="submit" class="btn bg-secondary float-end text-white w-100">Iniciar sesión</button>
                     </div>
                   </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="font-weight-bold small" href="register.php">Crear cuenta</a>
+                  </div>
+                  <div class="text-center">
+                  </div>
                 </div>
               </div>
             </div>

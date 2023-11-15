@@ -18,8 +18,8 @@ $resultado = $conexion->query($query);
 // echo $query;
 if ($conexion->query($query) === TRUE) {
 
-    echo "factura eliminada con éxito";
-    header('Location: factura.php');
+    echo "<script>alert('Factura Eliminada con Éxito. ');</script>";
+    echo "<script>window.location.href='../factura.php';</script>";
     exit(); // Es importante agregar exit() para asegurarte de que el script se detenga aquí y no continúe ejecutándose.
 } else {
     echo "Error al eliminar el factura: " . $conexion->error;

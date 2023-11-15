@@ -1,7 +1,7 @@
 <?php
 // conexion a la base de datos
 //Verificacion de Sesion
-include ('../usuarios/variable_sesion.php');
+//include ('../usuarios/variable_sesion.php');
 include('../bd/conexion.php');
 include('../scripts/head.php');
 
@@ -24,8 +24,8 @@ if ($resultado->num_rows > 0) {
 
     <body class="container mt-4">
         <h3 class="mb-4">DETALLE FACTURA</h3>
-        <table class="table">
-            <thead class="thead-dark">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                     <th>Cliente</th>
                     <th>Fecha</th>
@@ -38,7 +38,7 @@ if ($resultado->num_rows > 0) {
                     echo "<tr>";
                     echo "<td>" . $fila["nombre"] . "</td>";
                     echo "<td>" . $fila["fecha"] . "</td>";
-                    echo "<td>" . $fila["total"] . "</td>";
+                    echo "<td>" .number_format($fila["total"], 2, ',', '.')  . "</td>";
                     echo "</tr>";
                 }
                 ?>
@@ -53,8 +53,8 @@ if ($resultado->num_rows > 0) {
 
         if ($resultado->num_rows > 0) {
             ?>
-            <table class="table">
-                <thead class="thead-dark">
+            <table class="table table-striped">
+                <thead>
                     <tr>
                         <th>Producto</th>
                         <th>Cantidad</th>
@@ -63,7 +63,7 @@ if ($resultado->num_rows > 0) {
                         <th>Acciones <a class="btn btn-success" href="crear_detalle_factura.php?id=<?php echo $id ?>">+</a></th>
                     </tr>
                 </thead>
-                <tfoot class="thead-dark">
+                <tfoot>
                     <tr>
                         <th>Producto</th>
                         <th>Cantidad</th>
@@ -79,7 +79,7 @@ if ($resultado->num_rows > 0) {
                         echo "<td>" . $fila["nombre"] . "</td>";
                         echo "<td>" . $fila["cantidad"] . "</td>";
                         echo "<td>" . $fila["precio_unitario"] . "</td>";
-                        echo "<td>" . $fila["total_linea"] . "</td>";
+                        echo "<td>" . number_format($fila["total_linea"], 2, ',', '.')  . "</td>";
                         echo "<td><a class='btn btn-danger' href='op_eliminar_detalle_factura.php?id=" . $fila["id_detalle"] . "&idf=" . $id . "'>Quitar</a></td>";
                         echo "</tr>";
                     }
@@ -91,7 +91,7 @@ if ($resultado->num_rows > 0) {
             echo "No hay productos en la factura. ¿<a href='crear_detalle_factura.php?id=$id'>Desea agregar un producto?</a>?";
         }
         ?>
-        <a class="btn btn-primary" href="factura.php">Volver</a>
+        <a class="btn btn-primary" href="../factura.php">Volver</a>
     </body>
 
     </html>

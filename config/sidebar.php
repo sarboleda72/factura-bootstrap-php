@@ -14,6 +14,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
+          <i class="fa-regular fa-user"></i>
           <span>Clientes</span>
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
@@ -35,9 +36,15 @@
           <span>Producto</span>
         </a>
         <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+        <?php if (basename($_SERVER['PHP_SELF']) != 'producto.php') { ?>
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="form_basics.html">Listar</a>
+            <a class="collapse-item" href="producto.php">Listar</a>
           </div>
+          <?php } else { ?>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" data-toggle="modal" data-target="#modalCrearProducto">Crear</a>
+          </div>
+          <?php } ?>
         </div>
       </li>
       <li class="nav-item">
@@ -47,10 +54,16 @@
           <span>Factura</span>
         </a>
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+        <?php if (basename($_SERVER['PHP_SELF']) != 'factura.php') { ?>
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="simple-tables.html">Listar</a>
+            <a class="collapse-item" href="factura.php">Listar</a>
+          </div>
+          <?php } else { ?>
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" data-toggle="modal" data-target="#modalCrearProducto">Crear</a>
           </div>
         </div>
+        <?php } ?>
       </li>
       <hr class="sidebar-divider">
       <div class="version" id="version-ruangadmin"></div>

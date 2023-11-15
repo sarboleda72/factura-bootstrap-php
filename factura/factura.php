@@ -1,39 +1,27 @@
 <?php
 // conexion a la base de datos
 //Verificacion de Sesion
-include ('../usuarios/variable_sesion.php');
-include ('../bd/conexion.php');
-include('../scripts/head.php');
+//include ('../usuarios/variable_sesion.php');
+include ('./bd/conexion.php');
+
 
 // Consulta SQL para obtener todos los facturas
 $query = "SELECT factura.id_factura, cliente.nombre, factura.fecha, factura.total FROM factura INNER JOIN cliente ON factura.id_cliente = cliente.id_cliente";
 $resultado = $conexion->query($query);
 
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Factura</title>
-    <!-- No es necesario volver a enlazar los estilos de Bootstrap si ya lo has hecho en head.php -->
-</head>
-<body>
-    <div class="container mt-4">
+    <div class="container">
         <h3 class="mb-4">FACTURAS</h3>
-        <table class="table">
-            <thead class="thead-dark">
+        <table class="table table-striped">
+            <thead>
                 <tr>
                     <th>Cliente</th>
                     <th>Fecha</th>
                     <th>Total</th>
-                    <th>Acciones <a href='crear_factura.php' class='btn btn-success'>
-                        <i class="fas fa-plus"></i> Añadir Factura
-                    </a></th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
-            <tfoot class="thead-dark">
+            <tfoot>
                 <tr>
                     <th>Cliente</th>
                     <th>Fecha</th>
@@ -47,22 +35,24 @@ $resultado = $conexion->query($query);
                     echo "<tr>";
                     echo "<td>" . $fila["nombre"] . "</td>";
                     echo "<td>" . $fila["fecha"] . "</td>";
-                    echo "<td>" . $fila["total"] . "</td>";
+                    echo "<td>" . number_format($fila["total"], 2, ',', '.') . "</td>";
                     echo "<td>
-                            <a class='btn btn-info' href='detalle_factura.php?id=" . $fila["id_factura"] . "'>Detalle</a>
-                            <a class='btn btn-warning' href='actualizar_factura.php?id=" . $fila["id_factura"] . "'>Actualizar</a>
-                            <a class='btn btn-danger' href='op_eliminar_factura.php?id=" . $fila["id_factura"] . "'>Eliminar</a>
-                        </td>";
+                            <a class='btn btn-info' href='factura/detalle_factura.php?id=" . $fila["id_factura"] . "'>Detalle</a>
+                        ";
+                    
+                    echo "" . '<button class="btn btn-primary btn-sm btnEditarUsuario" data-id="' . $fila["id_factura"] . '" data-toggle="modal" data-target="#modalActualizarUsuario' . $fila["id_factura"] . '">' . '<i class="material-icons">Editar</i>' . '</button>' . '<button class="btn btn-danger btn-sm btnBorrarUsuario" data-id="' . $fila["id_factura"] . '" data-toggle="modal" data-target="#modalEliminarPersona' . $fila["id_factura"] . '">' . '<i class="material-icons">Eliminar</i>' . '</button>' . "</td>";
                     echo "</tr>";
+                    echo '<div class="modal fade" id="modalActualizarUsuario' . $fila["id_factura"] . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">';
+                    include('modal_actualizar.php');
+                    echo '</div>';
+                    echo '<div class="modal fade" id="modalEliminarPersona' . $fila["id_factura"] . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">';
+                    include('modal_eliminar.php');
+                    echo '</div>';
                 }
                 ?>
             </tbody>
         </table>
-        <a class="btn btn-primary" href="index.php">Volver</a>
     </div>
-</body>
-</html>
-
 <?php
 // Cerrar la conexión
 $conexion->close();

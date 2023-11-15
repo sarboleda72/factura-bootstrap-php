@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalCrearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="modalCrearProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="div">
             <div class="modal-header">
@@ -12,22 +12,17 @@
                         <!-- Form Basic -->
                         <div class="card mb-4 d-sm-flex align-items-center justify-content-between">
                             <div class="card-body col-lg-6">
-                                <form action="cliente/op_crear_cliente.php" method="POST">
-                                    <h2>Crear cliente</h2>
+                                <form action="producto/op_crear_producto.php" method="post">
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
                                         <input type="text" class="form-control" name="nombre" id="nombre" require>
                                     </div>
                                     <div class="form-group">
-                                        <label for="direccion">Dirección</label>
-                                        <input type="text" class="form-control" name="direccion" id="direccion" require>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="telefono">Teléfono</label>
-                                        <input type="number" class="form-control" name="telefono" id="telefono" require>
+                                        <label for="precio">Precio</label>
+                                        <input type="text" class="form-control" name="precio" id="precio" require>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Crear</button>
-                                    <a class="btn btn-outline-primary" data-dismiss="modal">Volver</a>
+                                    <a href="producto.php" class="btn btn-secondary">Volver</a>
                                 </form>
                             </div>
                         </div>

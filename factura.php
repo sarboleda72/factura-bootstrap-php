@@ -35,8 +35,11 @@ if($_SESSION['accedio']!=true){
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
 
-        
-        
+          <?php include 'factura/factura.php'; ?>
+
+          <!-- Modal -->
+          <?php include 'factura/modal_crear.php'; ?>
+
         </div>
         <!---Container Fluid-->
       </div>

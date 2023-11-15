@@ -11,7 +11,7 @@ $query = "INSERT INTO producto(nombre, precio) VALUES ('$nombre', '$precio')";
 
 if ($conexion->query($query) === TRUE) {
     echo "<script>alert('Producto Creado con Éxito ');</script>";
-    echo "<script>window.location.href='producto.php';</script>";
+    echo "<script>window.location.href='../producto.php';</script>";
     exit();
 } else {
     echo "Error al crear el producto: ".$conexion->error;

@@ -10,7 +10,7 @@ $query = "UPDATE factura SET id_cliente = '$nombre', fecha = '$fecha' WHERE id_f
 
 if ($conexion->query($query) === TRUE) {
     echo "<script>alert('Factura Actualizada con éxito');</script>";
-    echo "<script>window.location.href='factura.php';</script>";
+    echo "<script>window.location.href='../factura.php';</script>";
     exit(); // Es importante agregar exit() para asegurarte de que el script se detenga aquí y no continúe ejecutándose.
 } else {
     echo "Error al actualizar la factura: " . $conexion->error;

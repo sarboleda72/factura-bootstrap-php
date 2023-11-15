@@ -20,21 +20,21 @@
                             ?>
                                 <h3>ACTUALIZAR CLIENTE</h3>
                                 <form action="cliente/op_actualizar_cliente.php" method="post">
-                                    <input type="hidden" name="id_cliente" value="<?php echo $filaModal['id_cliente'] ?>">
+                                    <input type="hidden" name="id_cliente" value="<?php echo $filaModal['id_cliente'] ?>" require>
 
                                     <div class="form-group">
                                         <label for="nombre">Actualizar Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" value="<?php echo $filaModal['nombre'] ?>">
+                                        <input type="text" class="form-control" name="nombre" value="<?php echo $filaModal['nombre'] ?>" require>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="direccion">Actualizar Dirección</label>
-                                        <input type="text" class="form-control" name="direccion" value="<?php echo $filaModal['direccion'] ?>">
+                                        <input type="text" class="form-control" name="direccion" value="<?php echo $filaModal['direccion'] ?>" require>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="telefono">Actualizar Teléfono</label>
-                                        <input type="text" class="form-control" name="telefono" value="<?php echo $filaModal['telefono'] ?>">
+                                        <input type="text" class="form-control" name="telefono" value="<?php echo $filaModal['telefono'] ?>" require>
                                     </div>
 
                                     <div class="form-group">
